@@ -1,0 +1,51 @@
+{
+  "name": "mammatus/terraform-events",
+  "description": "🏗️📣 Terraform related Events",
+  "license": "MIT",
+  "version": "1.0.0",
+  "require": {
+    "php": "^8.4",
+    "ext-json": "^8.4"
+  },
+  "require-dev": {
+    "wyrihaximus/makefiles": "^0.12.3",
+    "wyrihaximus/test-utilities": "^13.3.0"
+  },
+  "autoload": {
+    "psr-4": {
+      "Mammatus\\Terraform\\Events\\": "src/"
+    }
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "Mammatus\\Tests\\Terraform\\Events\\": "tests/"
+    }
+  },
+  "config": {
+    "allow-plugins": {
+      "composer/package-versions-deprecated": true,
+      "dealerdirect/phpcodesniffer-composer-installer": true,
+      "drupol/composer-packages": true,
+      "ergebnis/composer-normalize": true,
+      "icanhazstring/composer-unused": true,
+      "infection/extension-installer": true,
+      "mindplay/composer-locator": true,
+      "phpstan/extension-installer": true,
+      "wyrihaximus/broadcast": true,
+      "wyrihaximus/makefiles": true,
+      "wyrihaximus/test-utilities": true
+    },
+    "platform": {
+      "php": "8.4.13"
+    },
+    "sort-packages": true
+  },
+  "scripts": {
+    "post-install-cmd": [
+      "make on-install-or-update || true"
+    ],
+    "post-update-cmd": [
+      "make on-install-or-update || true"
+    ]
+  }
+}
