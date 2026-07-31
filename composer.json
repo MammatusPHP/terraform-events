@@ -2,7 +2,6 @@
   "name": "mammatus/terraform-events",
   "description": "🏗️📣 Terraform related Events",
   "license": "MIT",
-  "version": "1.0.0",
   "require": {
     "php": "^8.4",
     "ext-json": "^8.4"
