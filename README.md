@@ -19,21 +19,33 @@ This package provides the following events:
 
 ## Variables
 
-This event is emitted when Terraform tfvars are being collected from a Mammatus application. Register listeners on
-`Variables::class` and use `add` to register entries that will be returned through `get` and encoded as HCL tfvars by
+This event is emitted when Terraform tfvars are being collected from a Mammatus application. Register a
+[`wyrihaximus/broadcast`](https://github.com/wyrihaximus/php-broadcast) listener and use `add` to register entries
+that will be returned through `get` and encoded as HCL tfvars by
 [`mammatus/terraform`](https://github.com/MammatusPHP/terraform).
 
 ```php
+<?php
+
+declare(strict_types=1);
+
+namespace MyApp\Terraform;
+
 use Mammatus\Terraform\Events\Variables;
 use Mammatus\Terraform\Events\Variables\Registry\Entry;
+use WyriHaximus\Broadcast\Contracts\Listener;
 
-Variables::class => [
-    static function (Variables $variables): void {
+final class VariablesListener implements Listener
+{
+    public function vars(Variables $variables): void
+    {
         $variables->add(new Entry('app_name', 'mammatus-demo'));
         $variables->add(new Entry('replicas', 3));
-    },
-],
+    }
+}
 ```
+
+When multiple listeners register the same variable name, the last one wins.
 
 # License
 
