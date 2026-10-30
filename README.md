@@ -19,9 +19,9 @@ This package provides the following events:
 
 ## Variables
 
-This event is emitted when Terraform tfvars are being collected from a Mammatus application. Register a
+This event is emitted when Terraform variable definitions are being collected from a Mammatus application. Register a
 [`wyrihaximus/broadcast`](https://github.com/wyrihaximus/php-broadcast) listener and use `add` to register entries
-that will be returned through `get` and encoded as HCL tfvars by
+that will be returned through `get` and encoded as HCL variable files by
 [`mammatus/terraform`](https://github.com/MammatusPHP/terraform).
 
 ```php
